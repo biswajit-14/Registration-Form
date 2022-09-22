@@ -1,0 +1,15 @@
+:root{
+    --bs-cyan: #a8dcea;
+}
+
+body{
+    background-color: var(--bs-cyan);
+}
+
+span{
+    color: red;
+}
+a{
+    color: white;
+    text-decoration: none;
+}

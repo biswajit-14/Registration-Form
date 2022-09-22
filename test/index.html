@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="form first">
+                    <form onsubmit="myFunc(event)">
+                        <div class="form-group">
+                            <label>Name <span>*</span></label>
+                            <div>
+                                <input type="text" id="first_name" class="form-control1" placeholder="First" required />
+                                <input type="text" id="last_name" class="form-control2" placeholder="Last" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Date of Birth <span>*</span></label>
+                            <div>
+                                <input type="date" id="date_of_birth" class="form-control1" style="width: 24rem;"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Email <span>*</span></label>
+                            <div>
+                                <input type="Email" id="email" class="form-control1" placeholder="Enter Your mail"
+                                    style="
+                            width: 24rem;" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Father's Name <span>*</span></label>
+                            <div>
+                                <input type="text" id="f_first" class="form-control1" placeholder="First" required />
+                                <input type="text" id="f_last" class="form-control2" placeholder="Last" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Mother's Name <span>*</span></label>
+                            <div>
+                                <input type="text" id="m_first" class="form-control1" placeholder="First" required />
+                                <input type="text" id="m_last" class="form-control2" placeholder="Last" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Gender <span>*</span></label>
+                            <div>
+                                <input type="radio" name="gender" id="gender" required> M
+                                <br>
+                                <input type="radio" name="gender">F
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Nationality <span>*</span></label>
+                            <div>
+                                <input type="text" id="nationality" class="form-control1" style="width: 24rem;"
+                                    required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Home Address <span>*</span></label>
+                            <div>
+                                <input type="text" id="address" class="form-control1" placeholder="Sreet Address" style="
+                            width: 24rem;" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <input type="text" id="city" class="form-control1 my-2" placeholder="City" required />
+
+                                <select name="country" id="country" style="width: 12rem; padding: 3px;">
+                                    <option selected hidden value="">Country</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Telephone-Home</label>
+                            <div>
+                                <input type="tel" pattern="[0-9]{10}" id="telephone" placeholder="### ### ####"
+                                    style="
+                            width: 24rem;" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Telephone-Mobile <span>*</span></label>
+                            <div>
+                                <input type="tel" pattern="[0-9]{10}" id="mobile" placeholder="### ### ####" style="
+                            width: 24rem;" required />
+                            </div>
+                        </div>
+                        <!-- first click on save to save all your details and 
+                            then after save click next to go to next page -->
+                        <input type="submit" value="Save" class="btn btn-primary my-3">
+                        <button type="submit" class="btn btn-primary"><a href="index2.html">Next</a></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function myFunc(event) {
+            event.preventDefault();
+            // validate();
+
+            var first_name = document.getElementById("first_name").value;
+            var last_name = document.getElementById("last_name").value;
+            var date_of_birth = document.getElementById("date_of_birth").value;
+            var email = document.getElementById("email").value;
+            var f_first = document.getElementById("f_first").value;
+            var f_last = document.getElementById("f_last").value;
+            var m_first = document.getElementById("m_first").value;
+            var m_last = document.getElementById("m_last").value;
+            var temp_gender = document.getElementById("gender");
+            var nationality = document.getElementById("nationality").value;
+            var address = document.getElementById("address").value;
+            var city = document.getElementById("city").value;
+            var country = document.getElementById("country").value;
+            var telephone = document.getElementById("telephone").value;
+            var mobile = document.getElementById("mobile").value;
+
+            temp_gender.checked ? gender = "M" : gender = "F";
+
+            localStorage.setItem('Is_first_name', first_name);
+            localStorage.setItem('Is_last_name', last_name);
+            localStorage.setItem('Is_date_of_birth', date_of_birth);
+            localStorage.setItem('Is_email', email);
+            localStorage.setItem('Is_f_first', f_first);
+            localStorage.setItem('Is_f_last', f_last);
+            localStorage.setItem('Is_m_first', m_first);
+            localStorage.setItem('Is_m_last', m_last);
+            localStorage.setItem('Is_gender', gender);
+            localStorage.setItem('Is_nationality', nationality);
+            localStorage.setItem('Is_address', address);
+            localStorage.setItem('Is_city', city);
+            localStorage.setItem('Is_country', country);
+            localStorage.setItem('Is_telephone', telephone);
+            localStorage.setItem('Is_mobile', mobile);
+
+        }
+
+        const isEmail = (email) => {
+            var atSymbol = email.indexOf("@");
+            if (atSymbol < 1) return false;
+            var dot = email.LastIndexOf('.');
+            if (dot <= atSymbol + 2) return false;
+            if (dot === email.length - 1) return false;
+            return true;
+        }
+
+        const validate = () => {
+            var first_name = first_name.value.trim()
+            var last_name = last_name.value.trim()
+            var email = email.value.trim()
+            var f_first = f_first.value.trim()
+            var f_last = f_last.value.trim()
+            var m_first = m_first.value.trim()
+            var m_last = m_last.value.trim()
+
+            if (first_name === "") {
+                setErrorMsg(first_name, 'first name cannot be blank.');
+            }
+            else if (first_name.length <= 2) {
+                setErrorMsg(first_name, 'first name min 3 char.');
+            }
+            else {
+                setSuccessMsg(first_name);
+            }
+
+            if (last_name === "") {
+                setErrorMsg(last_name, 'last name cannot be blank.');
+            }
+            else if (last_name.length <= 1) {
+                setErrorMsg(last_name, 'last name min 2 char.');
+            }
+            else {
+                setSuccessMsg(last_name);
+            }
+
+            if (email === "") {
+                setErrorMsg(email, 'email cannot be blank.');
+            }
+            else if (!isEmail(email)) {
+                setErrorMsg(email, 'Not a valid email.');
+            }
+            else {
+                setSuccessMsg(email);
+            }
+        }
+
+        const form = document.querySelector("form"),
+                btn = form.querySelector(".btn"),
+                allInput = form.querySelectorAll(".first input");
+
+        btn.addEventListner("click", ()=>{
+            allInput.forEach(input =>{
+                if(input.value != ""){
+                    form.classList.add('setActive');
+                }else{
+                    form.classList.remove('setActive');
+                    alert("input is empty")
+                }
+            })
+        })
+    </script>
+
+</body>
+
+</html>

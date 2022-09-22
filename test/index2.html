@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <form onsubmit="myFunc(event)">
+                        <div class="form-group">
+                            <label>HSC - Institution Name <span>*</span></label>
+                            <div>
+                                <input type="text" id="Institution_Name" class="form-control1"
+                                    placeholder="Enter Your Institution Name" style="width: 24rem;" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="my-3">
+                                <select name="country" id="select_hsc_board" style="width: 24rem;" required>
+                                    <option selected hidden value="">Select HSC Board</option>
+                                    <option value="CBSC">CBSC</option>
+                                    <option value="ICSC">ICSC</option>
+                                    <option value="State Board">State Board</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>HSC - Score in Percentage <span>*</span></label>
+                            <div>
+                                <input type="text" id="score_hsc" class="form-control1" placeholder="Enter Your Score"
+                                    style="width: 24rem;" required />
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 10px;">
+                            <label>SSC - Institution Name <span>*</span></label>
+                            <div>
+                                <input type="text" id="Institution_Name1" class="form-control1"
+                                    placeholder="Enter Your Institution Name" style="width: 24rem;" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="my-3">
+                                <select name="country" id="select_ssc_board" style="width: 24rem;" required>
+                                    <option value="">Select SSC Board</option>
+                                    <option value="CBSC">CBSC</option>
+                                    <option value="ICSC">ICSC</option>
+                                    <option value="State Board">State Board</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>SSC - Score in Percentage <span>*</span></label>
+                            <div>
+                                <input type="text" id="score_ssc" class="form-control1" placeholder="Enter Your Score"
+                                    style="width: 24rem;" required />
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-top: 10px;">
+                            <label>Currently Pursuing <span>*</span></label>
+                            <div>
+                                <input type="text" id="cur_pur" class="form-control1"
+                                    placeholder="Enter Your Institution Name" style="width: 24rem;" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Current Institution Name <span>*</span></label>
+                            <div>
+                                <input type="text" id="cur_institution" class="form-control1"
+                                    placeholder="Enter Your Institution Name" style="width: 24rem;" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Overall Percentage <span>*</span></label>
+                            <div>
+                                <input type="text" id="all_per" class="form-control1" placeholder="Enter Your Score"
+                                    style="width: 24rem;" required />
+                            </div>
+                        </div>
+                        <label>Current backlog if any</label>
+                        <div>
+                            <input type="radio" name="backlog" id="backlog" required> Yes
+                            <input type="radio" name="backlog"> No
+                        </div>
+                        <div>
+                            <!-- first click on save to save all your details and 
+                            then after save click next to go to next page -->
+                            <input type="submit" value="Save" class="btn btn-primary my-3">
+                        <button type="submit" class="btn btn-primary"><a href="index3.html">Next</a></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function myFunc(event) {
+            event.preventDefault();
+
+            var Institution_Name = document.getElementById("Institution_Name").value;
+            var select_hsc_board = document.getElementById("select_hsc_board").value;
+            var score_hsc = document.getElementById("score_hsc").value;
+            var Institution_Name1 = document.getElementById("Institution_Name1").value;
+            var select_ssc_board = document.getElementById("select_ssc_board").value;
+            var score_ssc = document.getElementById("score_ssc").value;
+            var cur_pur = document.getElementById("cur_pur").value;
+            var cur_institution = document.getElementById("cur_institution").value;
+            var all_per = document.getElementById("all_per").value;
+            var temp_backlog = document.getElementById("backlog");
+
+            temp_backlog.checked ? backlog = "Yes" : backlog = "No";
+
+            localStorage.setItem('Is_Institution_Name', Institution_Name);
+            localStorage.setItem('Is_select_hsc_board', select_hsc_board);
+            localStorage.setItem('Is_score_hsc', score_hsc);
+            localStorage.setItem('Is_Institution_Name1', Institution_Name1);
+            localStorage.setItem('Is_select_ssc_board', select_ssc_board);
+            localStorage.setItem('Is_score_ssc', score_ssc);
+            localStorage.setItem('Is_cur_pur', cur_pur);
+            localStorage.setItem('Is_cur_institution', cur_institution);
+            localStorage.setItem('all_per', all_per);
+            localStorage.setItem('Is_backlog', backlog);
+
+        }
+
+        const validate = () => {
+            var Institution_Name = Institution_Name.value.trim()
+            var score_hsc = score_hsc.value.trim()
+            var Institution_Name1 = Institution_Name1.value.trim()
+            var score_ssc = score_ssc.value.trim()
+            var cur_pur = cur_pur.value.trim()
+            var cur_institution = cur_institution.value.trim()
+            var all_per = all_per.value.trim()
+        }
+    </script>
+</body>
+
+</html>
